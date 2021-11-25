@@ -1,21 +1,35 @@
-# Pancake Factory
+# YokaiSwap Core
 
-[![Actions Status](https://github.com/pancakeswap/pancake-swap-core/workflows/CI/badge.svg)](https://github.com/pancakeswap/pancake-swap-core/actions)
+## Local Development
 
-In-depth documentation on PancakeSwap is available at [docs.pancakeswap.finance](https://docs.pancakeswap.finance/).
+The following assumes the use of `node@>=14`.
 
-# Local Development
-
-The following assumes the use of `node@>=10`.
-
-## Install Dependencies
+### Install Dependencies
 
 `yarn`
 
-## Compile Contracts
+### Compile Contracts
 
 `yarn compile`
 
-## Run Tests
+## Deployment
 
-`yarn test`
+First, create a `.env` file, remember to replace placeholders with real value.
+
+```sh
+cat > .env <<EOF
+DEPLOYER_PRIVATE_KEY=< replace with your private key >
+RPC_URL=< polyjuice web3 rpc >
+NETWORK_SUFFIX=< gw-testnet or gw-mainnet >
+
+ROLLUP_TYPE_HASH=< replace with godwoken rollup type hash >
+ETH_ACCOUNT_LOCK_CODE_HASH=< replace with godwoken eth-account-lock code hash >
+EOF
+```
+
+Then compile and deploy.
+
+```sh
+yarn compile
+yarn deploy
+```
